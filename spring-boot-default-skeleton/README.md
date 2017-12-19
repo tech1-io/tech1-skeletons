@@ -1,7 +1,7 @@
 # spring-boot-default-skeleton
 Spring Boot Default Skeleton — Spring Boot, LOGGER
 
-### Setup
+### Setup 
 * Cleanup
 
 ```bash
@@ -9,6 +9,11 @@ $ rm -rf .idea
 $ rm -rf .sonar
 $ rm -rf target
 $ find . -name '*.iml' -delete
+```
+* Copy (attention: on */.* )
+
+```bash
+$ cp -fR $SOURCE_PATH/. $TARGET_PATH
 ```
 
 * Edit pom.xml: `artifactId`, `build.finalName` values (*e.g. app-server*)
