@@ -14,6 +14,6 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Application.class);
         springApplication.run(args);
-        LOGGER.info("[Spring Boot Default Skeleton Application] started...");
+        LOGGER.info("******* ******* ******* ******* started...");
     }
 }
