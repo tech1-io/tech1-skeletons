@@ -2,5 +2,5 @@
 Spring Boot Default Skeleton — Spring Boot, LOGGER
 
 ### Setup
-
-to be discussed...
+* Edit pom.xml: `artifactId` + `build.finalName` values (*e.g. app-server*)
+* to be continued...
