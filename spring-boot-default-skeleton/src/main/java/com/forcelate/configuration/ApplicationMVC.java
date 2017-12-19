@@ -19,16 +19,13 @@ public class ApplicationMVC extends WebMvcConfigurerAdapter {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         Cors cors = applicationProperties.getAppConfigs().getCors();
-        if (cors.isEnabled()) {
-            System.out.println("===");
-            System.out.println(applicationProperties.getAppConfigs().getCors());
-            System.out.println("===");
+        if (cors.getEnabled()) {
             LOGGER.info("Spring configuration: CORS mappings enabled");
             registry.addMapping(cors.getPathPattern())
                     .allowedOrigins(cors.getAllowedOrigins())
                     .allowedMethods(cors.getAllowedMethods())
                     .exposedHeaders(cors.getExposedHeaders())
-                    .allowCredentials(cors.isAllowCredentials());
+                    .allowCredentials(cors.getAllowCredentials());
         } else {
             LOGGER.info("Spring configuration: CORS mappings disabled");
         }
