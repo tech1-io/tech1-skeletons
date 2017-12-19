@@ -1,0 +1,17 @@
+# Folders
+target/
+.gradle/
+build/
+logs/
+
+# IDEA
+.idea/
+*.iml
+
+# Eclipse
+.settings/
+*.classpath
+*.project
+
+# Sonar
+.sonar
