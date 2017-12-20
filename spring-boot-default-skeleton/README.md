@@ -21,3 +21,4 @@ $ cp -fR $SOURCE_PATH/. $TARGET_PATH
 * Edit application-***.yml (files): `server.port`, `appConfigs.cors.enabled`
 * Edit com.forcelate.Application.java: LOGGER message
 * Edit README :)
+* Deployment: https://github.com/forcelate/forcelate-skeletons/wiki/Installation-Guide:-Spring-Boot-on-Ubuntu

@@ -39,7 +39,7 @@
     </dependencies>
 
     <build>
-        <finalName>skeleton</finalName>
+        <finalName>app</finalName>
         <plugins>
             <!-- Compiler -->
             <plugin>
