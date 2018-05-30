@@ -22,3 +22,13 @@ $ cp -fR $SOURCE_PATH/. $TARGET_PATH
 * Edit com.forcelate.Application.java: LOGGER message
 * Edit README :)
 * Deployment: https://github.com/forcelate/forcelate-skeletons/wiki/Installation-Guide:-Spring-Boot-on-Ubuntu
+
+### Verify
+
+```bash
+curl -X GET http://localhost:8484/api/user | json_pp
+```
+
+```bash
+curl -X POST http://localhost:8484/api/message | json_pp
+```
