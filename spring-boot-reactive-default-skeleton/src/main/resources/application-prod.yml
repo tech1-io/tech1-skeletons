@@ -1,0 +1,24 @@
+# Server
+server:
+  port: 8484
+
+# Logging
+logging:
+  config: classpath:logback-prod.xml
+
+# Application Configuration
+appConfigs:
+  cors:
+    enabled: true
+    pathPattern: /api/**
+    allowedOrigins:
+      - http://localhost:8686
+      - http://localhost:8787
+    allowedMethods:
+      - DELETE
+      - GET
+      - POST
+      - PUT
+    exposedHeaders:
+      - Authorization
+    allowCredentials: true
