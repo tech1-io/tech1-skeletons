@@ -1,5 +1,5 @@
-# spring-boot-default-skeleton
-Spring Boot Default Skeleton — Spring Boot 1.*, LOGGER
+# spring-boot-2v-default-skeleton
+Spring Boot 2v Default Skeleton — Spring Boot, LOGGER
 
 ### Setup 
 * Cleanup

@@ -1,0 +1,10 @@
+[Unit]
+Description=App
+After=syslog.target
+
+[Service]
+ExecStart=/bin/bash -c "java -jar -Dspring.profiles.active=prod /root/app/app.jar"
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
