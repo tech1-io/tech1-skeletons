@@ -6,6 +6,25 @@ server:
 logging:
   config: classpath:logback-dev.xml
 
+# Management
+management:
+  metrics:
+    export:
+      influx:
+        auto-create-db: true
+        batch-size: 10000
+        compressed: true
+        connect-timeout: 1s
+        consistency: one
+        db: skeletonDb
+        enabled: true
+        num-threads: 2
+#        password: mysecret
+        read-timeout: 10s
+        step: 1m
+        uri: http://localhost:8086
+#        user-name: myusername
+
 # Application Configuration
 appConfigs:
   cors:
