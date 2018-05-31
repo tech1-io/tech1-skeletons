@@ -37,6 +37,12 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Unit Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,6 +88,8 @@
                 </executions>
                 <configuration>
                     <excludes>
+                        <exclude>com/forcelate/Application.class</exclude>
+                        <exclude>com/forcelate/configuration/ApplicationMVC.class</exclude>
                         <exclude>com/forcelate/configuration/ApplicationProperties.class</exclude>
                         <exclude>com/forcelate/domain/**/*</exclude>
                         <exclude>com/forcelate/properties/**/*</exclude>

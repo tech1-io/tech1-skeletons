@@ -1,13 +1,12 @@
 package com.forcelate.resource;
 
 import com.forcelate.domain.User;
+import com.forcelate.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -16,20 +15,26 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserResource {
 
+    private final UserService userService;
+
+    @Autowired
+    public UserResource(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/{userId}")
+    public User findOne(@PathVariable("userId") long userId) {
+        return this.userService.findOne(userId);
+    }
+
     @GetMapping
-    public List<User> users() {
-        LOGGER.info("API: Users");
-        return Arrays.asList(
-                User.builder()
-                        .id(1)
-                        .username("username1")
-                        .age(20)
-                        .build(),
-                User.builder()
-                        .id(2)
-                        .username("username2")
-                        .age(25)
-                        .build()
-        );
+    public List<User> findAll() {
+        return this.userService.findAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(value = HttpStatus.OK)
+    public void add() {
+        this.userService.add();
     }
 }
