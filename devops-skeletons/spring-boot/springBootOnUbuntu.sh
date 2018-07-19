@@ -18,3 +18,5 @@ sudo rm -rf /var/cache/oracle-jdk8-installer
 mkdir /root/preparation
 mkdir /root/app
 
+# Remote: JAR-as-service
+cp app.service /etc/systemd/system
