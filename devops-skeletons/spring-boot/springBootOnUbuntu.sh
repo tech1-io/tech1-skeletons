@@ -19,10 +19,5 @@ mkdir /root/preparation
 mkdir /root/app
 
 # Remote: JAR-as-service
-pwd
-
-ECHO "HERE #1"
-
 cp app.service /etc/systemd/system
-
-ECHO "HERE #2"
+systemctl enable app.service
