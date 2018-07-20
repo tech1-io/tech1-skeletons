@@ -5,6 +5,9 @@ apt-get update && \
 apt-get install -y lighttpd && \
 apt-get clean 
 
+# Remote: Folders
+mkdir /root/preparation
+
 # Remote: Override server configuration
 cp /root/frontend/lighttpd.conf /etc/lighttpd/lighttpd.conf
 
