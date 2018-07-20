@@ -2,6 +2,6 @@
 DevOps production-ready skeletons to speed up development on early stages
 
 ### Skeletons
-* Spring Boot on Ubuntu - Spring Boot based application hosted on Ubuntu 18.04
-* Vue.js on Ubuntu - Vue.js based application hosted on Ubuntu 18.04
+* Spring Boot, Ubuntu 18.04
+* Vue.js, Ubuntu 18.04
 * to be continued...
