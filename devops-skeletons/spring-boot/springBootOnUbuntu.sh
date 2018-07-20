@@ -19,5 +19,9 @@ mkdir /root/preparation
 mkdir /root/app
 
 # Remote: JAR-as-service
-cp app.service /etc/systemd/system
+cp /root/spring-boot/app.service /etc/systemd/system
 systemctl enable app.service
+
+# Remote: Cleanup
+cd /root
+rm -rf spring-boot
