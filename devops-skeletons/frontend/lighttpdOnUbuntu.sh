@@ -3,7 +3,7 @@
 # Remote: lighttpd
 apt-get update && \
 apt-get upgrade && \
-apt-get install lighttpd
+apt-get install -y lighttpd
 
 # Remote: Cleanup
 cd /root
