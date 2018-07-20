@@ -9,3 +9,7 @@ chmod +x /root/app/app.jar
 
 # Remote: start service
 systemctl start app.service
+
+# Remote: Cleanup
+cd /root
+rm -rf spring-boot
