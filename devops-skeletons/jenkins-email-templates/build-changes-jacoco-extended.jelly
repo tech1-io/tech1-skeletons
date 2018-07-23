@@ -1,0 +1,212 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define">
+
+<STYLE>
+BODY, TABLE, TD, TH, P {
+  font-family:Verdana,Helvetica,sans serif;
+  font-size:11px;
+  color:black;
+}
+h1 { color:black; }
+h2 { color:black; }
+h3 { color:black; }
+TD.bg1 { color:white; background-color:#0000C0; font-size:120% }
+TD.bg2 { color:white; background-color:#4040FF; font-size:110% }
+TD.bg3 { color:white; background-color:#8080FF; }
+TD.test_passed { color:blue; }
+TD.test_failed { color:red; }
+TD.console { font-family:Courier New; }
+</STYLE>
+<BODY>
+<j:set var="spc" value="&amp;nbsp;&amp;nbsp;" />
+<j:set var="buildenv" value="${build.getEnvironment(listener)}"/>
+<j:set var="branch" value="${buildenv.get('GIT_BRANCH')}"/>
+<j:set var="dateOfBuild" value="${buildenv.get('BUILD_TIMESTAMP')}"/>
+<j:set var="startedBy" value="${buildenv.get('BUILD_USER')}"/>
+
+<!-- GENERAL INFO -->
+
+<TABLE>
+  <TR><TD align="right">
+    <j:choose>
+      <j:when test="${build.result=='SUCCESS'}">
+        <IMG SRC="${rooturl}static/e59dfe28/images/32x32/blue.gif" />
+      </j:when>
+    <j:when test="${build.result=='FAILURE'}">
+        <IMG SRC="${rooturl}static/e59dfe28/images/32x32/red.gif" />
+      </j:when>
+      <j:otherwise>
+        <IMG SRC="${rooturl}static/e59dfe28/images/32x32/yellow.gif" />
+      </j:otherwise>
+    </j:choose>
+  </TD><TD valign="center"><B style="font-size: 200%;">BUILD ${build.result}</B></TD></TR>
+  <TR><TD>Build URL</TD><TD><A href="${rooturl}${build.url}">${rooturl}${build.url}</A></TD></TR>
+  <TR><TD>Project:</TD><TD>${project.name}</TD></TR>
+  <TR><TD>Branch:</TD><TD>${branch}</TD></TR>
+  <TR><TD>Date of build:</TD><TD>${dateOfBuild}</TD></TR>
+  <TR><TD>Build duration:</TD><TD>${build.durationString}</TD></TR>
+  <TR><TD>Started by:</TD><TD>${startedBy}</TD></TR>
+</TABLE>
+<BR/>
+
+
+<!-- CHANGE SET -->
+
+<j:set var="changeSet" value="${build.changeSet}" />
+<j:if test="${changeSet!=null}">
+  <j:set var="hadChanges" value="false" />
+  <TABLE width="100%">
+    <TR><TD class="bg1" colspan="2"><B>CHANGES</B></TD></TR>
+    <j:forEach var="cs" items="${changeSet}" varStatus="loop">
+      <j:set var="hadChanges" value="true" />
+      <j:set var="aUser" value="${cs.hudsonUser}"/>
+      <TR>
+        <TD colspan="2" class="bg2">${spc}Revision <B>${cs.commitId?:cs.revision?:cs.changeNumber}</B> by
+          <B>${aUser!=null?aUser.displayName:cs.author.displayName}: </B>
+          <B>(${cs.msgAnnotated})</B>
+         </TD>
+      </TR>
+      <j:forEach var="p" items="${cs.affectedFiles}">
+        <TR>
+          <TD width="10%">${spc}${p.editType.name}</TD>
+          <TD>${p.path}</TD>
+        </TR>
+      </j:forEach>
+    </j:forEach>
+    <j:if test="${!hadChanges}">
+      <TR><TD colspan="2">No Changes</TD></TR>
+    </j:if>
+  </TABLE>
+<BR/>
+</j:if>
+
+
+<!-- ARTIFACTS -->
+
+<j:set var="artifacts" value="${build.artifacts}" />
+<j:if test="${artifacts!=null and artifacts.size()&gt;0}">
+  <TABLE width="100%">
+    <TR><TD class="bg1"><B>BUILD ARTIFACTS</B></TD></TR>
+    <TR>
+      <TD>
+        <j:forEach var="f" items="${artifacts}">
+          <li>
+            <a href="${rooturl}${build.url}artifact/${f}">${f}</a>
+          </li>
+        </j:forEach>
+      </TD>
+    </TR>
+  </TABLE>
+<BR/>  
+</j:if>
+
+
+<!-- MAVEN ARTIFACTS -->
+
+<j:set var="mbuilds" value="${build.moduleBuilds}" />
+<j:if test="${mbuilds!=null}">
+  <TABLE width="100%">
+      <TR><TD class="bg1"><B>BUILD ARTIFACTS</B></TD></TR>
+      <j:forEach var="m" items="${mbuilds}">
+        <TR><TD class="bg2"><B>${m.key.displayName}</B></TD></TR>
+        <j:forEach var="mvnbld" items="${m.value}">
+        <j:set var="artifacts" value="${mvnbld.artifacts}" />
+        <j:if test="${artifacts!=null and artifacts.size()&gt;0}">
+      <TR>
+        <TD>
+          <j:forEach var="f" items="${artifacts}">
+            <li>
+              <a href="${rooturl}${mvnbld.url}artifact/${f}">${f}</a>
+            </li>
+          </j:forEach>
+        </TD>
+      </TR>
+        </j:if>
+        </j:forEach>
+      </j:forEach>
+  </TABLE>
+<BR/>  
+</j:if>
+
+
+<!-- JUnit TEMPLATE -->
+
+<j:set var="junitResultList" value="${it.JUnitTestResult}" />
+<j:if test="${junitResultList.isEmpty()!=true}">
+  <TABLE width="100%">
+    <TR><TD class="bg1" colspan="2"><B>JUnit Tests</B></TD></TR>
+    <j:forEach var="junitResult" items="${it.JUnitTestResult}">
+      <j:forEach var="packageResult" items="${junitResult.getChildren()}">
+        <TR><TD class="bg2" colspan="2"> Name: ${packageResult.getName()} Failed: ${packageResult.getFailCount()} test(s), Passed: ${packageResult.getPassCount()} test(s), Skipped: ${packageResult.getSkipCount()} test(s), Total: ${packageResult.getPassCount()+packageResult.getFailCount()+packageResult.getSkipCount()} test(s)</TD></TR>
+        <j:forEach var="failed_test" items="${packageResult.getFailedTests()}">
+          <TR bgcolor="white"><TD class="test_failed" colspan="2"><B><li>Failed: ${failed_test.getFullName()} </li></B></TD></TR>
+        </j:forEach>
+      </j:forEach> 
+    </j:forEach>  
+  </TABLE>  
+<BR/>
+</j:if>
+
+
+<!-- JACOCO TEMPLATE -->
+
+<j:set var="jacocoAction" value="${it.getAction('hudson.plugins.jacoco.JacocoBuildAction')}" />
+<j:if test="${jacocoAction!=null}">
+  <j:set var="jacocoResult" value="${jacocoAction.result}" />
+  <j:if test="${jacocoResult!=null}">
+    <a href="${rooturl}${build.url}jacoco/">
+      <h1>Jacoco Results</h1>
+    </a>
+    <table class="border">
+      <tr>
+        <th class="border">Package</th>
+        <th class="border">Branches</th>
+        <th class="border">Complexity</th>
+        <th class="border">Instructions</th>
+        <th class="border">Methods</th>
+        <th class="border">Lines</th>
+        <th class="border">Classes</th>
+      </tr>
+      <j:forEach var="child" items="${jacocoResult.getChildren().entrySet()}">
+        <j:set var="cResult" value="${child.value}"/>
+        <tr>
+          <td class="border">
+            <a href="${rooturl}${build.url}jacoco/${child.key}/"><tt>${child.key}</tt></a>
+          </td>
+          <td class="border right">${cResult.branchCoverage.percentage}%</td>
+          <td class="border right">${cResult.complexityScore.percentage}%</td>
+          <td class="border right">${cResult.instructionCoverage.percentage}%</td>
+          <td class="border right">${cResult.methodCoverage.percentage}%</td>
+          <td class="border right">${cResult.lineCoverage.percentage}%</td>
+          <td class="border right">${cResult.classCoverage.percentage}%</td>
+        </tr>
+      </j:forEach>
+        <tr>
+          <td class="border">
+            <a href="${rooturl}${build.url}jacoco/"><tt>Project Coverage Summary</tt></a>
+          </td>
+          <td class="border right">${jacocoResult.branchCoverage.percentage}%</td>
+          <td class="border right">${jacocoResult.complexityScore.percentage}%</td>
+          <td class="border right">${jacocoResult.instructionCoverage.percentage}%</td>
+          <td class="border right">${jacocoResult.methodCoverage.percentage}%</td>
+          <td class="border right">${jacocoResult.lineCoverage.percentage}%</td>
+          <td class="border right">${jacocoResult.classCoverage.percentage}%</td>
+        </tr>
+    </table>
+  </j:if>
+<BR/>
+</j:if>
+
+
+<!-- CONSOLE OUTPUT -->
+
+<j:getStatic var="resultFailure" field="FAILURE" className="hudson.model.Result"/>
+<j:if test="${build.result==resultFailure}">
+<TABLE width="100%" cellpadding="0" cellspacing="0">
+<TR><TD class="bg1"><B>CONSOLE OUTPUT</B></TD></TR>
+<j:forEach var="line" items="${build.getLog(100)}"><TR><TD class="console">${line}</TD></TR></j:forEach>
+</TABLE>
+<BR/>
+</j:if>
+
+</BODY>
+</j:jelly>
