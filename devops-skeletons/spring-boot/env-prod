@@ -1,0 +1,3 @@
+# app.service: configuration
+
+SPRING_PROFILE="prod"
