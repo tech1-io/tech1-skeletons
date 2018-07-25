@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$1" == "stage" ] || [ "$1" == "prod" ]; then
+if [ "$1" == "stage" ] || [ "$1" == "preprod" ] ||[ "$1" == "prod" ]; then
 
 	# Remote: support components
 	apt-get update && \
@@ -30,5 +30,5 @@ if [ "$1" == "stage" ] || [ "$1" == "prod" ]; then
 	rm -rf spring-boot
 
 else
-	echo "Available profiles: stage | prod"
+	echo "Available profiles: stage | preprod | prod"
 fi
