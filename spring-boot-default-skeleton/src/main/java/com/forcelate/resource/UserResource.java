@@ -2,7 +2,6 @@ package com.forcelate.resource;
 
 import com.forcelate.domain.User;
 import com.forcelate.service.UserService;
-import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +28,6 @@ public class UserResource {
     }
 
     @GetMapping
-    @Timed
     public List<User> findAll() {
         return this.userService.findAll();
     }
