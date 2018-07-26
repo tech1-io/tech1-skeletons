@@ -4,11 +4,10 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -37,6 +36,18 @@ public class RandomUtils {
 
     public static String randomString() {
         return UUID.randomUUID().toString();
+    }
+
+    public static List<String> randomListOfStrings(int size) {
+        return IntStream.range(0, size)
+                .mapToObj(position -> randomString())
+                .collect(Collectors.toList());
+    }
+
+    public static String[] randomArrayOfStrings(int size) {
+        return IntStream.range(0, size)
+                .mapToObj(position -> randomString())
+                .toArray(String[]::new);
     }
 
     public static String randomEmail() {
