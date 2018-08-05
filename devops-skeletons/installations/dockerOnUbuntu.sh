@@ -15,7 +15,9 @@ sudo apt update
 
 apt-cache policy docker-ce
 
-sudo apt install docker-ce
+sudo apt install -y docker-ce && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists
 
 docker ps
 
