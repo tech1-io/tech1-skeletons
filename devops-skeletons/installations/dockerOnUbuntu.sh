@@ -2,9 +2,10 @@
 
 set -x 
 
-sudo apt update
-
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt-get update && \
+	apt-get install -y apt-transport-https ca-certificates curl software-properties-common && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
