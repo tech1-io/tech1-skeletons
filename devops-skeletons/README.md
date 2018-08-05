@@ -1,9 +1,8 @@
 # devops-skeletons
 DevOps production-ready skeletons to speed up development on early stages
 
-### Skeletons
+### Content
+* Docker: Vue.js, Spring Boot
+* Front-end: Vue.js, Ubuntu 18.04
+* Jenkins: jelly-based email templates
 * Spring Boot, Ubuntu 18.04
-* Vue.js, Ubuntu 18.04
-
-### Wiki: Java, Front-end, DevOps etc. 
-https://github.com/forcelate/forcelate-skeletons/wiki
