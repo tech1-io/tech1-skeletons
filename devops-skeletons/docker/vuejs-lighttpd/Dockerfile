@@ -1,5 +1,6 @@
 # build stage
 FROM node:9.11.1-alpine as build-stage
+ARG VUEJS_PROFILE
 WORKDIR /app
 COPY package*.json ./
 RUN npm install

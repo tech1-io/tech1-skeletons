@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-docker build -t forcelate/vuejs-lighttpd .
+docker build \
+  --build-arg VUEJS_PROFILE='dev' \
+  -t forcelate/vuejs-lighttpd.
