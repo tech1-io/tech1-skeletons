@@ -14,8 +14,6 @@ apt-cache policy docker-ce
 
 sudo apt install docker-ce
 
-sudo systemctl status docker
-
 docker ps
 
 echo "Docker installation completed..."
