@@ -17,4 +17,4 @@ fi
 
 docker run -it -p 8484:8484 \
   -e SPRING_BOOT_PROFILE=${SPRING_BOOT_PROFILE} \
-  --rm --name app-server forcelate/spring-boot
+  --rm --name app-server forcelate/spring-boot:dev
