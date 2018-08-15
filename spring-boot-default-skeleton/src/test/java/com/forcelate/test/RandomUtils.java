@@ -4,19 +4,21 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RandomUtils {
     private static Random rnd = ThreadLocalRandom.current();
 
-    private static final String FREEMARKER_MAP_KEY = "randomKey";
-    private static final String FREEMARKER_MAP_VALUE = "randomValue";
-    private static final String EMAIL_DOMAIN = "@jdv.com";
+    private static final String EMAIL_DOMAIN = "@forcelate.com";
     private static final int UNIQUE_VALUE = 1;
 
     public static <T extends Enum> T randomEnum(Class<?> enumClazz) {
@@ -24,10 +26,28 @@ public class RandomUtils {
         return (T) values[rnd.nextInt(values.length)];
     }
 
-    public static Map<String, Object> randomFreemarkerMap() {
-        Map<String, Object> map = new HashMap<>();
-        map.put(FREEMARKER_MAP_KEY, FREEMARKER_MAP_VALUE);
-        return map;
+    public static <T extends Enum> T randomEnumExcept(Class<?> enumClazz, T enumInstance) {
+        Object[] values = enumClazz.getEnumConstants();
+        Optional<Object> enumOpt = Stream.of(values)
+                .filter(item -> !item.equals(enumInstance))
+                .findAny();
+        if (enumOpt.isPresent()) {
+            return (T) enumOpt.get();
+        } else {
+            throw new IllegalArgumentException("No exchange type. Please check " + enumClazz + " enum");
+        }
+    }
+
+    public static <T extends Enum> T randomEnumExcept(Class<?> enumClazz, List<T> enumInstances) {
+        Object[] values = enumClazz.getEnumConstants();
+        Optional<Object> enumOpt = Stream.of(values)
+                .filter(item -> !enumInstances.contains(item))
+                .findAny();
+        if (enumOpt.isPresent()) {
+            return (T) enumOpt.get();
+        } else {
+            throw new IllegalArgumentException("No exchange type. Please check " + enumClazz + " enum");
+        }
     }
 
     public static boolean randomBoolean() {
@@ -54,7 +74,7 @@ public class RandomUtils {
         return UUID.randomUUID().toString() + EMAIL_DOMAIN;
     }
 
-    public static int randomUnique() {
+    public static int unique() {
         return UNIQUE_VALUE;
     }
 
@@ -62,10 +82,18 @@ public class RandomUtils {
         return rnd.nextInt(4) + 1;
     }
 
+    public static Integer randomIntegerTwoDigits() {
+        return rnd.nextInt(10) + 89;
+    }
+
     public static Integer randomIntegerByBound(int bound) { return rnd.nextInt(bound); }
 
     public static Integer randomInteger() {
         return rnd.nextInt();
+    }
+
+    public static Integer randomNegativeInteger() {
+        return -rnd.nextInt();
     }
 
     public static Long randomLong() {
@@ -76,8 +104,16 @@ public class RandomUtils {
         return rnd.nextDouble();
     }
 
-    public static BigDecimal uniquePositiveBigDecimal() {
-        return BigDecimal.valueOf(randomUnique());
+    public static BigDecimal randomBigDecimal() {
+        return BigDecimal.valueOf(randomDouble() * randomIntegerTwoDigits());
+    }
+
+    public static BigDecimal randomNegativeBigDecimal() {
+        return BigDecimal.valueOf(randomDouble() * -randomIntegerTwoDigits());
+    }
+
+    public static BigDecimal uniqueBigDecimal() {
+        return BigDecimal.valueOf(unique());
     }
 
     public static Short randomShort() {
