@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-docker build -t forcelate/vuejs-lighttpd:dev .
+
+COMPANY=forcelate
+APP=vuejs-lighttpd
+TAG=dev
+
+docker build -t ${COMPANY}/${APP}:${TAG} .

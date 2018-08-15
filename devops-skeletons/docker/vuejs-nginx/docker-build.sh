@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-docker build -t forcelate/vuejs-nginx:dev .
+
+COMPANY=forcelate
+APP=vuejs-nginx
+TAG=dev
+
+docker build -t ${COMPANY}/${APP}:${TAG} .

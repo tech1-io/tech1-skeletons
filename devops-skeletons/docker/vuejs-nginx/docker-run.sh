@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-docker run -it -p 8787:80 --rm --name app-client forcelate/vuejs-nginx:dev
+
+COMPANY=forcelate
+APP=vuejs-nginx
+TAG=dev
+
+docker run -it -p 8787:80 --rm --name ${APP} ${COMPANY}/${APP}:${TAG}

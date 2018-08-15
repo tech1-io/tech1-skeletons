@@ -3,9 +3,9 @@ Docker production-ready / development-ready skeletons to speed up development on
 
 ### Content
 * Spring Boot
-* Spring Boot: clean machine (no Java/Maven) - (!) NOT production ready (as an option)
-* Vue.js: based on http-server (npm), 8787 => 8080
-* Vue.js: based on lighttpd: 8787 => 80
+* Spring Boot: clean machine (no Java/Maven) - (!) Note: Not supported approach in production by us)
+* Vue.js: based on http-server (npm), 8787 => 8080. Note: Not supported approach in production by us
+* Vue.js: based on lighttpd: 8787 => 80. Note: Not supported approach in production by us
 * Vue.js: based on nginx, 8787 => 80
 
 ### (!) WARNING
