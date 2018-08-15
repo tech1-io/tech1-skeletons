@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build -t forcelate/vuejs-http-server .
+docker build -t forcelate/vuejs-http-server:dev .
