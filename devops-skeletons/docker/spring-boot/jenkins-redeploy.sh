@@ -3,6 +3,7 @@
 COMPANY=forcelate
 APP=vuejs-nginx
 TAG=latest
+SPRING_BOOT_PROFILE=prod
 
 docker stop ${APP}
 
