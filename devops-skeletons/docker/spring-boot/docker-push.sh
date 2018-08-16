@@ -21,6 +21,7 @@ fi
 echo "Docker push: started..."
 
 echo "Docker build image"
+# mvn clean install
 docker build -t ${COMPANY}/${APP}:${TAG} .
 
 echo "Docker tag image"
