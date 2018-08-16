@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+COMPANY=forcelate
+APP=spring-boot
+TAG=dev
 SPRING_BOOT_PROFILE=$1
 echo "===================================================="
 echo "ENV: -Dspring.profiles.active = $SPRING_BOOT_PROFILE"
@@ -17,4 +20,4 @@ fi
 
 docker run -it -p 8484:8484 \
   -e SPRING_BOOT_PROFILE=${SPRING_BOOT_PROFILE} \
-  --rm --name app-server forcelate/spring-boot:dev
+  --rm --name ${APP} ${COMPANY}/${APP}:${TAG}
