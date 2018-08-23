@@ -40,4 +40,41 @@ body, table, tr, td {
 
 <br />
 
+<!-- CHANGES -->
+
+<%
+  def changeSets = build.changeSets
+  if(changeSets != null) {
+    def hadChanges = false %>
+  <table class="section">
+    <tr class="tr-title">
+      <td class="td-title" colspan="2">CHANGES</td>
+    </tr>
+    <% changeSets.each() { 
+      cs_list -> cs_list.each() { 
+        cs -> hadChanges = true %>
+    <tr>
+      <td>
+        <B>[<%= cs.author %>]:</B>
+      </td>
+      <td>${cs.msgAnnotated}</td>
+    </tr>
+        <% cs.affectedFiles.each() {
+          p -> %>
+    <tr>
+      <td class="filesChanged">${p.editType.name}</td>
+      <td>${p.path}</td>
+    </tr>
+        <% }
+      }
+    }
+    if ( !hadChanges ) { %>
+    <tr>
+      <td colspan="2">No Changes</td>
+    </tr>
+    <% } %>
+  </table>
+  <br/>
+  <% } %>
+
 </body>
