@@ -1,0 +1,39 @@
+<STYLE>
+BODY, TABLE, TD, TH, P {
+  font-family:Verdana,Helvetica,sans serif;
+  font-size:11px;
+  color:black;
+}
+</STYLE>
+<BODY>
+
+<%
+  import hudson.model.*
+
+  def branchJob = build.parent
+  def pipelineJob = branchJob.parent
+  def buildenv = build.getEnvironment(listener)
+  def buildURL = buildenv.get('BUILD_URL')
+  def triggerBy = build.getCause(Cause.UserIdCause).getUserName()
+  def status = build.result.toString()
+%>
+
+<TABLE>
+  <TR><TD align="right">
+  <% if (status == 'SUCCESS') { %>
+    <IMG SRC="${rooturl}static/e59dfe28/images/32x32/blue.gif" />
+  <% } else if (status == 'FAILURE') { %>
+    <IMG SRC="${rooturl}static/e59dfe28/images/32x32/red.gif" />
+  <% } else { %>
+    <IMG SRC="${rooturl}static/e59dfe28/images/32x32/yellow.gif" />
+  <% } %>
+  </TD><TD valign="center"><B style="font-size: 200%;">BUILD ${status}</B></TD></TR>  
+  <TR><TD>URL:</TD><TD><A href="${buildURL}">${buildURL}</A></TD></TR>
+  <TR><TD>Project:</TD><TD>${pipelineJob.displayName}</TD></TR>
+  <TR><TD>Branch:</TD><TD>${branchJob.displayName}</TD></TR>
+  <TR><TD>Time:</TD><TD>${buildenv.get('BUILD_TIMESTAMP')}</TD></TR>
+  <TR><TD>Duration:</TD><TD>${build.durationString}</TD></TR>
+  <TR><TD>Trigger:</TD><TD>${triggerBy}</TD></TR>
+</TABLE>
+<BR/>
+</BODY>
