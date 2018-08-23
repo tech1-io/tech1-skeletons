@@ -35,7 +35,7 @@ body, table, tr, td {
   <tr><td>Branch:</td><td>${branchJob.displayName}</td></tr>
   <tr><td>Time:</td><td>${buildenv.get('BUILD_TIMESTAMP')}</td></tr>
   <tr><td>Duration:</td><td>${build.durationString}</td></tr>
-  <tr><td>trigger:</td><td>${triggerBy}</td></tr>
+  <tr><td>Trigger:</td><td>${triggerBy}</td></tr>
 </table>
 
 <br />
