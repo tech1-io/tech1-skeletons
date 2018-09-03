@@ -1,5 +1,5 @@
 # forcelate-skeletons
-Production-ready skeletons to speed up development on early stages + WIKI
+Production-ready skeletons to speed up development on early stages + Wiki
 
 ### Skeletons
 * DevOps - Java and vue.js based application, docker infrastructure
