@@ -14,7 +14,11 @@ body, table, tr, td {
   def pipelineJob = branchJob.parent
   def buildenv = build.getEnvironment(listener)
   def buildURL = buildenv.get('BUILD_URL')
-  def triggerBy = build.getCause(Cause.UserIdCause).getUserName()
+  def cause = build.getCause(Cause.UserIdCause)
+  def triggerBy = 'SCMTrigger'
+  if (cause != null) {
+    triggerBy = cause.getUserName()
+  }
   def status = build.result.toString()
 %>
 
