@@ -122,6 +122,8 @@
                 </executions>
                 <configuration>
                     <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <dateFormat>dd.MM.yyyy HH:mm:ss</dateFormat>
+                    <dateFormatTimeZone>EET</dateFormatTimeZone>
                 </configuration>
             </plugin>
         </plugins>
