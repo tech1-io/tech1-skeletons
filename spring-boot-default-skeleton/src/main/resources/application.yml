@@ -1,3 +1,16 @@
 spring:
   profiles:
     active: dev
+
+# Application Common Configuration
+appConfigs:
+  cors:
+    pathPattern: /api/**
+    allowedMethods:
+    - DELETE
+    - GET
+    - POST
+    - PUT
+    exposedHeaders:
+    - Authorization
+    allowCredentials: true
