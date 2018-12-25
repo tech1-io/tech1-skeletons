@@ -18,10 +18,10 @@
         <!-- environment -->
         <java.version>1.8</java.version>
         <!-- dependencies -->
-        <lombok.version>1.16.18</lombok.version>
+        <lombok.version>1.18.4</lombok.version>
          <!-- plugins -->
-        <plugin.maven.compiler.version>3.6.2</plugin.maven.compiler.version>
-        <plugin.maven.jacoco.version>0.8.1</plugin.maven.jacoco.version>
+        <plugin.maven.compiler.version>3.8.0</plugin.maven.compiler.version>
+        <plugin.maven.jacoco.version>0.8.2</plugin.maven.jacoco.version>
     </properties>
 
     <dependencies>
@@ -70,6 +70,30 @@
                     <executable>true</executable>
                 </configuration>
             </plugin>
+            <!-- Copy Dependency: Lombok (Sonar Purposes) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-lombok</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.projectlombok</groupId>
+                                    <artifactId>lombok</artifactId>
+                                    <version>${lombok.version}</version>
+                                    <outputDirectory>${project.build.directory}/dependency</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <!-- Quality: Jacoco, Surefire -->
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -95,8 +119,6 @@
                         <exclude>com/forcelate/Application.class</exclude>
                         <exclude>com/forcelate/configuration/ApplicationMVC.class</exclude>
                         <exclude>com/forcelate/configuration/ApplicationProperties.class</exclude>
-                        <exclude>com/forcelate/domain/**/*</exclude>
-                        <exclude>com/forcelate/properties/**/*</exclude>
                         <exclude>com/forcelate/resource/InfoResource.class</exclude>
                     </excludes>
                 </configuration>
