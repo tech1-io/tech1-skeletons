@@ -29,6 +29,22 @@ pipeline {
                 }
             }
         }
+        stage('docker :dev') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                sh './docker/docker-push.sh dev $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD'
+            }
+        }
+        stage('docker :latest') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh './docker/docker-push.sh latest $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD'
+            }
+        }
     }
     post {
         always {
