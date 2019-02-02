@@ -17,6 +17,7 @@ $ cp -fR $SOURCE_PATH/. $TARGET_PATH
 ```
 
 * Edit pom.xml: `artifactId`, `build.finalName` values (*e.g. app-server*)
+* Edit maven package: edit `jacoco-maven-plugin`, `sonar-project.properties`, `ApplicationResourceBeans.java`
 * Edit sonar-project.properties: `sonar.projectKey`, `sonar.projectName` values (*e.g. app-server*)
 * Edit application-***.yml (files): `server.port`, `appConfigs.cors.enabled`
 * Edit Jenkinsfile: `notifications() -> emailext ->  to` values (*e.g. $TEAM_DEVELOPERS*)
