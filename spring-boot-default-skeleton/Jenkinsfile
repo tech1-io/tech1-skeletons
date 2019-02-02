@@ -34,7 +34,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                sh './docker/docker-push.sh dev $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD'
+                sh './docker-push.sh dev $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD'
             }
         }
         stage('docker :latest') {
@@ -42,7 +42,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh './docker/docker-push.sh latest $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD'
+                sh './docker-push.sh latest $DOCKERHUB_USERNAME $DOCKERHUB_PASSWORD'
             }
         }
     }
