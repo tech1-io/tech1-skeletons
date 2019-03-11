@@ -56,14 +56,25 @@ pipeline {
                     currentBuild.result = 'SUCCESS'
                 }
             }
-            notifications()
+            alwaysNotifications()
+        }
+        failure {
+            failureNotifications()
         }
     }
 }
 
-def notifications() {
+def alwaysNotifications() {
     emailext (
-        to: "$****_DEVELOPERS",
+        to: "$FORCELATE_CTO, $FORCELATE_DEVELOPERS",
+        subject: '${DEFAULT_SUBJECT}',
+        body: '''${SCRIPT, template="pipeline-changes.template"}'''
+    )
+}
+
+def failureNotifications() {
+    emailext (
+        to: "$FORCELATE_ADMINISTRATORS",
         subject: '${DEFAULT_SUBJECT}',
         body: '''${SCRIPT, template="pipeline-changes.template"}'''
     )
