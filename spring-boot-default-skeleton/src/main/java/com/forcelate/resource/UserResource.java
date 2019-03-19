@@ -2,6 +2,7 @@ package com.forcelate.resource;
 
 import com.forcelate.domain.User;
 import com.forcelate.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,14 +14,10 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/user")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserResource {
 
     private final UserService userService;
-
-    @Autowired
-    public UserResource(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/{userId}")
     public User findOne(@PathVariable("userId") long userId) {
