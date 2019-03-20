@@ -13,3 +13,6 @@ appConfigs:
     allowedOrigins:
       - http://localhost:8686
       - http://localhost:8787
+  secureConfig:
+    password1: ENC(s/6mYnvgl0zzpZa0BrezOg==)
+    password2: ENC(A4yLVcQ4VgSsytQYYIs5HhGXpZ2si465jrOCX9USXhI=)

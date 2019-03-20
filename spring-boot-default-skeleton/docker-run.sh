@@ -4,9 +4,11 @@ COMPANY=forcelate
 APP=spring-boot-server
 TAG=dev
 SPRING_BOOT_PROFILE=$1
-echo "===================================================="
-echo "ENV: -Dspring.profiles.active = $SPRING_BOOT_PROFILE"
-echo "===================================================="
+JASYPT_ENCRYPTOR_PASSWORD=$2
+echo "==============================================================="
+echo "ENV: -Dspring.profiles.active = '$SPRING_BOOT_PROFILE'"
+echo "ENV: -Djasypt.encryptor.password = '$JASYPT_ENCRYPTOR_PASSWORD'"
+echo "==============================================================="
 
 if [ "$SPRING_BOOT_PROFILE" != "dev" ] &&
     [ "$SPRING_BOOT_PROFILE" != "preprod" ] &&
@@ -20,4 +22,5 @@ fi
 
 docker run -it -p 8484:8484 \
   -e SPRING_BOOT_PROFILE=${SPRING_BOOT_PROFILE} \
+  -e JASYPT_ENCRYPTOR_PASSWORD=${JASYPT_ENCRYPTOR_PASSWORD} \
   --rm --name ${APP} ${COMPANY}/${APP}:${TAG}

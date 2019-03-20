@@ -13,3 +13,6 @@ appConfigs:
     allowedOrigins:
       - http://localhost:8686
       - http://localhost:8787
+  secureConfig:
+    password1: admin
+    password2: admin23verySeCUrE
