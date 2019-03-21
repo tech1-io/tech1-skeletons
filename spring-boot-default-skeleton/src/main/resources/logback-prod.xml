@@ -15,13 +15,13 @@
         <file>${LOGS_HOME}/debug.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOGS_HOME}/archive/debug.%d{dd-MM-yyyy}.%i.log</fileNamePattern>
+            <!-- keep maximum 3 days worth of archive files, deleting older ones -->
+            <maxHistory>3</maxHistory>
+            <!-- total size of all archived files is at most 100MB -->
+            <totalSizeCap>50MB</totalSizeCap>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- each file should be at most 5MB -->
                 <maxFileSize>5MB</maxFileSize>
-                <!-- keep maximum 3 days worth of archive files, deleting older ones -->
-                <maxHistory>3</maxHistory>
-                <!-- total size of all archived files is at most 100MB -->
-                <totalSizeCap>100MB</totalSizeCap>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -38,13 +38,13 @@
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOGS_HOME}/archive/error.%d{dd-MM-yyyy}.%i.log</fileNamePattern>
+            <!-- keep maximum 3 days worth of archive files, deleting older ones -->
+            <maxHistory>3</maxHistory>
+            <!-- total size of all archived files is at most 100MB -->
+            <totalSizeCap>50MB</totalSizeCap>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- each file should be at most 5MB -->
                 <maxFileSize>5MB</maxFileSize>
-                <!-- keep maximum 3 days worth of archive files, deleting older ones -->
-                <maxHistory>3</maxHistory>
-                <!-- total size of all archived files is at most 100MB -->
-                <totalSizeCap>100MB</totalSizeCap>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
