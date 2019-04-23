@@ -21,5 +21,16 @@ sudo apt install -y docker-ce && \
 
 docker ps
 
+# OPTIONAL
+# ========================================================================
+
+# AWS: sudo docker ps => docker ps
+# URL: https://docs.docker.com/install/linux/linux-postinstall/
+sudo usermod -aG docker $USER
+
+# Log out and log back in so that your group membership is re-evaluated
+
+# ========================================================================
+
 echo "Docker installation completed..."
 
