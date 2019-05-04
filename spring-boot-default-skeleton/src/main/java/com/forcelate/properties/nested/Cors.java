@@ -8,6 +8,7 @@ public class Cors {
     private String pathPattern;
     private String[] allowedOrigins;
     private String[] allowedMethods;
+    private String[] allowedHeaders;
     private String[] exposedHeaders;
     private Boolean allowCredentials;
 }

@@ -14,10 +14,13 @@ appConfigs:
   cors:
     pathPattern: /api/**
     allowedMethods:
-    - DELETE
-    - GET
-    - POST
-    - PUT
+      - DELETE
+      - GET
+      - POST
+      - PUT
+    allowedHeaders:
+      - Access-Control-Allow-Origin
+      - Access-Control-Allow-Headers
     exposedHeaders:
-    - Authorization
+      - Authorization
     allowCredentials: true
