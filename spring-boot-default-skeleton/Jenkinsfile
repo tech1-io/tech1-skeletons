@@ -11,12 +11,23 @@ pipeline {
         maven 'Maven 3.3.9'
     }
     stages {
-        stage('build') {
+        stage('build :dev') {
+            when {
+                branch 'dev'
+            }
             steps {
                 sh 'mvn clean install'
             }
         }
-        stage('sonar-analyze') {
+        stage('build :prod') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+        stage('sonar :dev') {
             when {
                 branch 'dev'
             }
