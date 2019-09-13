@@ -4,7 +4,7 @@ server:
 
 # Logging
 logging:
-  config: classpath:logback-dev.xml
+  config: classpath:logback-info.xml
 
 # Application Configuration
 appConfigs:
