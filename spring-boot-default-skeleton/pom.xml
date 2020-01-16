@@ -19,10 +19,10 @@
         <java.version>1.8</java.version>
         <!-- dependencies -->
         <jasypt.version>2.1.1</jasypt.version>
-        <lombok.version>1.18.6</lombok.version>
+        <lombok.version>1.18.10</lombok.version>
          <!-- plugins -->
-        <plugin.maven.compiler.version>3.8.0</plugin.maven.compiler.version>
-        <plugin.maven.jacoco.version>0.8.3</plugin.maven.jacoco.version>
+        <plugin.maven.compiler.version>3.8.1</plugin.maven.compiler.version>
+        <plugin.maven.jacoco.version>0.8.5</plugin.maven.jacoco.version>
     </properties>
 
     <dependencies>

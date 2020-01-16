@@ -2,21 +2,21 @@
 Spring Boot Default Skeleton — Spring Boot, LOGGER
 
 ### Secure Configurations Usage
-Tool:
-Download: `http://www.jasypt.org/`
-Typical Usage: `./bin/encrypt.sh input=value password=${PASSWORD}`
+Tool:  
+Download: `http://www.jasypt.org/`  
+Typical Usage: `./bin/encrypt.sh input=value password=${PASSWORD}`  
 
-Plain Configurations:
+Plain Configurations:  
 `mvn clean spring-boot:run`
 
-Secure Sensitive Configurations:
+Secure Sensitive Configurations:  
 `mvn clean -Djasypt.encryptor.password=${PASSWORD} spring-boot:run`
 
-Secure Sensitive Configurations in IDEA:\
+Secure Sensitive Configurations in IDEA:  
 Add `jasypt.encryptor.password` and `${PASSWORD}` as `Name | Value` under Environment Variables
 
 ### Password
-$PASSWORD = `FRC`
+$PASSWORD = `FRC`  
 Delete section in production app
 
 ### Setup 
