@@ -10,7 +10,7 @@ Plain Configurations:
 `mvn clean spring-boot:run`
 
 Secure Sensitive Configurations:  
-`mvn clean -Djasypt.encryptor.password=${PASSWORD} spring-boot:run`
+`mvn clean -Dspring-boot.run.arguments=--jasypt.encryptor.password=${PASSWORD} spring-boot:run`
 
 Secure Sensitive Configurations in IDEA:  
 Add `jasypt.encryptor.password` and `${PASSWORD}` as `Name | Value` under Environment Variables
