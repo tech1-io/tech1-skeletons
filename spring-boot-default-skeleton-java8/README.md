@@ -1,5 +1,5 @@
 # spring-boot-default-skeleton-java8
-(!) NO LONGER SUPPORTED (!)  
+### NO LONGER SUPPORTED
 Spring Boot Default Skeleton Java 8 — Java 8, Spring Boot, LOGGER
 
 ### Secure Configurations Usage

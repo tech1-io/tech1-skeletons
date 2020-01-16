@@ -1,5 +1,5 @@
 # spring-boot-default-skeleton
-(!) NO LONGER SUPPORTED (!)  
+### NO LONGER SUPPORTED
 Spring Boot Reactive Skeleton Java 8 — Java8, Spring Boot, LOGGER
 
 ### Secure Configurations Usage
