@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+
+# Spring Security: actuator endpoints (no security check)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["mappings","health","info"]
+
+# Application Common Configuration
+appConfigs:
+  cors:
+    pathPattern: /api/**
+    allowedMethods:
+      - DELETE
+      - GET
+      - POST
+      - PUT
+    allowedHeaders:
+      - Access-Control-Allow-Origin
+      - Access-Control-Allow-Headers
+    exposedHeaders:
+      - Authorization
+    allowCredentials: true
