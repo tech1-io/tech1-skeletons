@@ -48,9 +48,10 @@ $ cp -fR $SOURCE_PATH/. $TARGET_PATH
 * Deployment: https://github.com/forcelate/forcelate-skeletons/wiki/Deployment-Guide:-Spring-Boot-on-Ubuntu
 
 ### Tips 
-* *git-commit-id-plugin known issue*  
+* **git-commit-id-plugin known issue** 
   For proper project build you should make at least one initial commit into your git repository. Without any commits you will receive an error: 
   ```bash
-  [ERROR] Failed to execute goal pl.project13.maven:git-commit-id-plugin:3.0.1:revision (default) on project forcelate-xchange-server: 
-  Could not complete Mojo execution...: Error: Could not get HEAD Ref, are you sure you have some commits in the dotGitDirectory? -> [Help 1]
+  [ERROR] Failed to execute goal pl.project13.maven:git-commit-id-plugin:3.0.1:revision (default) 
+  on project forcelate-xchange-server: Could not complete Mojo execution...: Error: Could not get HEAD Ref, 
+  are you sure you have some commits in the dotGitDirectory? -> [Help 1]
   ```
