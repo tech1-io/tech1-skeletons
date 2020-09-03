@@ -49,7 +49,7 @@ $ cp -fR $SOURCE_PATH/. $TARGET_PATH
 
 ### Tips 
 * **git-commit-id-plugin known issue**  
-  For proper project build you should make at least one initial commit into your git repository. Without any commits you will receive an error: 
+  You should make at least one initial commit into your git repository for proper project build. Without any commits, you will receive next error during project build: 
   ```bash
   [ERROR] Failed to execute goal pl.project13.maven:git-commit-id-plugin:3.0.1:revision (default) 
   on project forcelate-xchange-server: Could not complete Mojo execution...: Error: Could not get HEAD Ref, 
