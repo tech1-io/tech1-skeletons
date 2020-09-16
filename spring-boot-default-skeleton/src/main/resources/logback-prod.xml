@@ -64,7 +64,7 @@
 
     <logger name="org.springframework" level="warn" />
 
-    <logger name="com.forcelate" level="debug" additivity="false">
+    <logger name="io.tech1" level="debug" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="ASYNC-FILE-DEBUG"/>
         <appender-ref ref="ASYNC-FILE-ERROR"/>

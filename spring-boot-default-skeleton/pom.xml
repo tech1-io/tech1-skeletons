@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.forcelate</groupId>
+    <groupId>io.tech1</groupId>
     <artifactId>spring-boot-default-skeleton</artifactId>
     <version>1.0</version>
 
@@ -123,10 +123,10 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>com/forcelate/Application.class</exclude>
-                        <exclude>com/forcelate/configuration/ApplicationMVC.class</exclude>
-                        <exclude>com/forcelate/configuration/ApplicationProperties.class</exclude>
-                        <exclude>com/forcelate/resource/InfoResource.class</exclude>
+                        <exclude>io/tech1/Application.class</exclude>
+                        <exclude>io/tech1/configuration/ApplicationMVC.class</exclude>
+                        <exclude>io/tech1/configuration/ApplicationProperties.class</exclude>
+                        <exclude>io/tech1/resource/InfoResource.class</exclude>
                     </excludes>
                 </configuration>
             </plugin>

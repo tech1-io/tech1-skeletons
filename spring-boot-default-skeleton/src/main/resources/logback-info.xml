@@ -9,7 +9,7 @@
         </layout>
     </appender>
 
-    <logger name="com.forcelate" level="info" additivity="false">
+    <logger name="io.tech1" level="info" additivity="false">
         <appender-ref ref="CONSOLE" />
     </logger>
 
