@@ -1,0 +1,6 @@
+projectKey=spring-boot-default-skeleton
+serverUrl=http://localhost:9000
+serverVersion=8.1.0.31237
+dashboardUrl=http://localhost:9000/dashboard?id=spring-boot-default-skeleton
+ceTaskId=AXSWZwkYT3cd6_NoPm3X
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXSWZwkYT3cd6_NoPm3X

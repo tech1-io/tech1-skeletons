@@ -15,7 +15,7 @@ else
     # Run install
     mvn clean install
     # Run sonar scanner
-    sonar-runner -X
+    sonar-scanner
     if [ "$?" -ne "0" ]; then
         echo "$ERROR_OUTPUT"
     else
