@@ -14,4 +14,4 @@ logs/
 *.project
 
 # Sonar
-.sonar
+.scannerwork
