@@ -23,10 +23,7 @@ Delete section in production app
 * Cleanup
 
 ```bash
-$ rm -rf .idea
-$ rm -rf .sonar
-$ rm -rf target
-$ find . -name '*.iml' -delete
+$ ./cleanup.sh
 ```
 * Copy (attention: on */.* )
 

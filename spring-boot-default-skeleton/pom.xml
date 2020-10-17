@@ -17,6 +17,8 @@
     <properties>
         <!-- environment -->
         <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- dependencies -->
         <jasypt.version>2.1.1</jasypt.version>
         <lombok.version>1.18.10</lombok.version>
