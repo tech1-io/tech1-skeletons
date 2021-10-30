@@ -11,20 +11,20 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.5.6</version>
     </parent>
 
     <properties>
         <!-- environment -->
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- dependencies -->
-        <jasypt.version>2.1.1</jasypt.version>
-        <lombok.version>1.18.10</lombok.version>
+        <jasypt.version>3.0.4</jasypt.version>
+        <lombok.version>1.18.22</lombok.version>
          <!-- plugins -->
         <plugin.maven.compiler.version>3.8.1</plugin.maven.compiler.version>
-        <plugin.maven.jacoco.version>0.8.5</plugin.maven.jacoco.version>
+        <plugin.maven.jacoco.version>0.8.7</plugin.maven.jacoco.version>
     </properties>
 
     <dependencies>

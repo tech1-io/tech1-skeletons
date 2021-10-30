@@ -4,9 +4,9 @@ import io.tech1.domain.User;
 import io.tech1.service.UserService;
 import io.tech1.test.InitializationUtils;
 import io.tech1.test.runner.ApplicationResourceRunner;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
@@ -23,15 +23,15 @@ public class UserResourceTest extends ApplicationResourceRunner {
     // Resource
     @Autowired private UserResource resourceUnderTest;
 
-    @Before
+    @BeforeEach
     public void before() {
-        beforeByResource(resourceUnderTest);
-        reset(userService);
+        beforeByResource(this.resourceUnderTest);
+        reset(this.userService);
     }
 
-    @After
+    @AfterEach
     public void after() {
-        verifyNoMoreInteractions(userService);
+        verifyNoMoreInteractions(this.userService);
     }
 
     @Test
@@ -39,14 +39,14 @@ public class UserResourceTest extends ApplicationResourceRunner {
         // Arrange
         User user = InitializationUtils.entity(User.class);
         Long userId = user.getId();
-        when(userService.findOne(eq(userId))).thenReturn(user);
+        when(this.userService.findOne(eq(userId))).thenReturn(user);
 
         // Act
         mvc.perform(get("/api/user/" + userId).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
         // Assert
-        verify(userService).findOne(eq(userId));
+        verify(this.userService).findOne(eq(userId));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class UserResourceTest extends ApplicationResourceRunner {
                 .andExpect(status().isOk());
 
         // Assert
-        verify(userService).findAll();
+        verify(this.userService).findAll();
     }
 
     @Test
@@ -66,6 +66,6 @@ public class UserResourceTest extends ApplicationResourceRunner {
                 .andExpect(status().isOk());
 
         // Assert
-        verify(userService).add();
+        verify(this.userService).add();
     }
 }

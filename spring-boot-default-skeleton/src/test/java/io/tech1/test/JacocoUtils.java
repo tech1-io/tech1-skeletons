@@ -23,7 +23,7 @@ public final class JacocoUtils {
     }
 
     private static void defaultConstructorHook(Class<?> clazz) throws ReflectiveOperationException {
-        clazz.newInstance();
+        clazz.getDeclaredConstructor().newInstance();
     }
 
     private static void privateConstructorHook(Class<?> clazz) throws ReflectiveOperationException {

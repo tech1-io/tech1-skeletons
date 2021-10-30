@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:jre-11.0.5_10-alpine
+FROM openjdk:17-jdk-alpine
 WORKDIR /app
 EXPOSE 8484
 ADD /target/app.jar app.jar

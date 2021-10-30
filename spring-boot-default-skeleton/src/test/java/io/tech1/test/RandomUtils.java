@@ -16,14 +16,13 @@ import java.util.stream.Stream;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RandomUtils {
-    private static Random rnd = ThreadLocalRandom.current();
-
+    private static final Random RND = ThreadLocalRandom.current();
     private static final String EMAIL_DOMAIN = "@tech1.io";
     private static final int UNIQUE_VALUE = 1;
 
     public static <T extends Enum> T randomEnum(Class<?> enumClazz) {
         Object[] values = enumClazz.getEnumConstants();
-        return (T) values[rnd.nextInt(values.length)];
+        return (T) values[RND.nextInt(values.length)];
     }
 
     public static <T extends Enum> T randomEnumExcept(Class<?> enumClazz, T enumInstance) {
@@ -51,7 +50,7 @@ public class RandomUtils {
     }
 
     public static boolean randomBoolean() {
-        return rnd.nextBoolean();
+        return RND.nextBoolean();
     }
 
     public static String randomString() {
@@ -71,7 +70,7 @@ public class RandomUtils {
     }
 
     public static String randomEmail() {
-        return UUID.randomUUID().toString() + EMAIL_DOMAIN;
+        return UUID.randomUUID() + EMAIL_DOMAIN;
     }
 
     public static int unique() {
@@ -79,29 +78,29 @@ public class RandomUtils {
     }
 
     public static Integer randomSmallInteger() {
-        return rnd.nextInt(4) + 1;
+        return RND.nextInt(4) + 1;
     }
 
     public static Integer randomIntegerTwoDigits() {
-        return rnd.nextInt(10) + 89;
+        return RND.nextInt(10) + 89;
     }
 
-    public static Integer randomIntegerByBound(int bound) { return rnd.nextInt(bound); }
+    public static Integer randomIntegerByBound(int bound) { return RND.nextInt(bound); }
 
     public static Integer randomInteger() {
-        return rnd.nextInt();
+        return RND.nextInt();
     }
 
     public static Integer randomNegativeInteger() {
-        return -rnd.nextInt();
+        return -RND.nextInt();
     }
 
     public static Long randomLong() {
-        return rnd.nextLong();
+        return RND.nextLong();
     }
 
     public static Double randomDouble() {
-        return rnd.nextDouble();
+        return RND.nextDouble();
     }
 
     public static BigDecimal randomBigDecimal() {
@@ -117,6 +116,6 @@ public class RandomUtils {
     }
 
     public static Short randomShort() {
-        return (short) rnd.nextInt(Short.MAX_VALUE + 1);
+        return (short) RND.nextInt(Short.MAX_VALUE + 1);
     }
 }

@@ -2,13 +2,14 @@ package io.tech1.service.impl;
 
 import io.tech1.domain.User;
 import io.tech1.service.UserService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import java.util.List;
@@ -16,8 +17,9 @@ import java.util.List;
 import static io.tech1.test.RandomUtils.randomLong;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith({ SpringExtension.class })
 @ContextConfiguration(loader=AnnotationConfigContextLoader.class)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserServiceImplTest {
 
     @Configuration
@@ -29,7 +31,7 @@ public class UserServiceImplTest {
         }
     }
 
-    @Autowired private UserService componentUnderTest;
+    private final UserService componentUnderTest;
 
     @Test
     public void findOne() {
@@ -37,7 +39,7 @@ public class UserServiceImplTest {
         Long userId = 1L;
 
         // Act
-        User user = componentUnderTest.findOne(userId);
+        User user = this.componentUnderTest.findOne(userId);
 
         // Assert
         assertThat(user).isNotNull();
@@ -52,7 +54,7 @@ public class UserServiceImplTest {
         Long userId = 2L + randomLong();
 
         // Act
-        User user = componentUnderTest.findOne(userId);
+        User user = this.componentUnderTest.findOne(userId);
 
         // Assert
         assertThat(user).isNull();
@@ -61,17 +63,17 @@ public class UserServiceImplTest {
     @Test
     public void findAllPlusAddInOneCaseNoProperMockingPossible() {
         // Act
-        List<User> users = componentUnderTest.findAll();
+        List<User> users = this.componentUnderTest.findAll();
 
         // Assert
         assertThat(users).isNotNull();
         assertThat(users).hasSize(2);
 
         // Act
-        componentUnderTest.add();
+        this.componentUnderTest.add();
 
         // Assert
-        List<User> usersAfterMutations = componentUnderTest.findAll();
+        List<User> usersAfterMutations = this.componentUnderTest.findAll();
         assertThat(usersAfterMutations).isNotNull();
         assertThat(usersAfterMutations).hasSize(3);
     }

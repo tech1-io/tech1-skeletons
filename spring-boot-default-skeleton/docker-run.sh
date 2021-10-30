@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMPANY=forcelate
+COMPANY=tech1
 APP=spring-boot-server
 TAG=dev
 SPRING_BOOT_PROFILE=$1

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMPANY=forcelate
+COMPANY=tech1
 APP=spring-boot-server
 TAG=$1
 DOCKERHUB_USERNAME=$2

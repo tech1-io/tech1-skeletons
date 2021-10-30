@@ -48,7 +48,7 @@ public final class InitializationUtils {
     // Private Methods
     // ------------------------------------------------------------------------------------------------------
     private static <T> T createWithDefaultConstructor(Class<? extends T> type) throws ReflectiveOperationException {
-        T instance = type.newInstance();
+        T instance = type.getDeclaredConstructor().newInstance();
         processSetters(instance);
         return instance;
     }

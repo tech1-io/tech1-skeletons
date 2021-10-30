@@ -1,6 +1,7 @@
 package io.tech1.resource;
 
 import io.tech1.utils.EnvironmentUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.info.Info;
 import org.springframework.boot.actuate.info.InfoContributor;
@@ -10,14 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class InfoResource implements InfoContributor {
 
     private final EnvironmentUtils environmentUtils;
-
-    @Autowired
-    public InfoResource(EnvironmentUtils environmentUtils) {
-        this.environmentUtils = environmentUtils;
-    }
 
     @Override
     public void contribute(Info.Builder builder) {
