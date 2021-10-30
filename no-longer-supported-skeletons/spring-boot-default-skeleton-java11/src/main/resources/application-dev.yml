@@ -1,0 +1,18 @@
+# Server
+server:
+  port: 8484
+
+# Logging
+logging:
+  config: classpath:logback-info.xml
+
+# Application Configuration
+appConfigs:
+  cors:
+    enabled: true
+    allowedOrigins:
+      - http://localhost:8686
+      - http://localhost:8787
+  secureConfig:
+    password1: admin
+    password2: admin23verySeCUrE
