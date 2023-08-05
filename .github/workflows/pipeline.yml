@@ -1,0 +1,30 @@
+name: pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send email
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_GMAIL_USERNAME }}
+          password: ${{ secrets.SMTP_GMAIL_PASSWORD }}
+          subject: '${{ job.status }}: ${{ github.repository }} » ${{ github.ref_name }}, build # ${{ github.run_number }}'
+          to: ${{ secrets.EMAILS_YURII_LUCHKIV }}, ${{ secrets.EMAILS_PAVLO_PASTUSHOK }}
+          from: Tech1 Ops
+          html_body: |
+            <b>Status</b>: ${{ job.status }}<br>
+            <b>CommitterId</b>: ${{ github.actor }}<br>
+            <b>URL</b>: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}<br>
+            <b>Changes</b>: https://github.com/${{ github.repository }}/commit/${{ github.sha }}<br>
+            <b>Committer</b>: ${{ github.event.commits[0].committer.name }}<br>
+            <b>Message</b>: ${{ github.event.commits[0].message }}<br>
