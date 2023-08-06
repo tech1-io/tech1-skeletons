@@ -10,7 +10,7 @@ jobs:
   pipeline:
     runs-on: ubuntu-latest
     steps:
-      - name: Send email
+      - name: Mails
         if: always()
         uses: dawidd6/action-send-mail@v3
         with:
