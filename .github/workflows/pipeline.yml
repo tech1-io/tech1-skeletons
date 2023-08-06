@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.SMTP_GMAIL_USERNAME }}
           password: ${{ secrets.SMTP_GMAIL_PASSWORD }}
           subject: '${{ job.status }}: ${{ github.repository }} » ${{ github.ref_name }}, build # ${{ github.run_number }}'
-          to: ${{ secrets.EMAILS_YURII_LUCHKIV }}, ${{ secrets.EMAILS_PAVLO_PASTUSHOK }}
+          to: ${{ secrets.EMAILS_ADMINS }}
           from: Tech1 Ops
           html_body: |
             <b>Status</b>: ${{ job.status }}<br>
