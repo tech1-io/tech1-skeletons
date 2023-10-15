@@ -22,7 +22,6 @@ jobs:
           to: ${{ secrets.EMAILS_ADMINS }}
           from: Tech1 Ops
           html_body: |
-            <b>Status</b>: ${{ job.status }}<br>
             <b>CommitterId</b>: ${{ github.actor }}<br>
             <b>Actions</b>: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}<br>
             <b>Changes</b>: https://github.com/${{ github.repository }}/commit/${{ github.sha }}<br>
